@@ -1,0 +1,27 @@
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Test/cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary Docker test output
+outputs/docker_test/
+
+# Working outputs - final submission copies are under outputs/results/
+outputs/*
+!outputs/results/
+!outputs/results/**

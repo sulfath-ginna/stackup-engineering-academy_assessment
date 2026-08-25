@@ -1,0 +1,9 @@
+dq_check,affected_rows,affected_pct,treatment
+Missing email,10,1.0,Retain as null; email cannot be safely fabricated.
+Invalid hire date,8,0.8,Convert invalid source value to NaT.
+Future hire date,0,0.0,Convert future date to NaT.
+Invalid/non-positive salary,0,0.0,Retain value and flag for HR/payroll review.
+Negative years experience,5,0.5,Replace negative experience with 0.
+Self manager reference,1,0.1,Set self-referencing manager_id to null.
+Invalid manager reference,0,0.0,Flag manager IDs not present in employee master.
+Salary-level statistical outlier,3,0.3,Flag using 1.5 IQR within level; retain original salary.

@@ -1,0 +1,46 @@
+StackUp Engineering Academy — Task 2.2 ETL Pipeline Summary
+=================================================================
+
+Run timestamp: 2026-08-25T07:11:15
+Pipeline execution time: 0.4330 seconds
+
+ROW COUNTS
+-----------------------------------------------------------------
+Projects: 500 before -> 500 after
+Employees: 1000 before -> 1000 after
+Transactions: 50000 before -> 50000 after
+
+DATA QUALITY DECISIONS
+-----------------------------------------------------------------
+1. Missing transaction amount is retained as NULL in the original amount column because the true amount is unknown.
+2. amount_aed converts missing amounts to 0.0 as explicitly required by Task 2.2 for downstream aggregation.
+3. Missing approved_by remains NULL because an approver cannot be safely fabricated.
+4. Project enrichment uses project_id with a many-to-one validated merge.
+5. Employee enrichment uses current employee records and joins approved_by to employee_id.
+6. Invalid employee hire dates are converted to NULL.
+7. Negative years_experience values are corrected to 0.
+8. Self-referencing manager_id values are corrected to NULL.
+9. Salary-level statistical outliers are flagged but salary is not changed because the correct salary cannot be safely inferred.
+
+VALIDATION RESULTS
+-----------------------------------------------------------------
+project_id_unique: True
+employee_id_unique: True
+transaction_id_unique: True
+transaction_row_count_preserved: True
+missing_project_enrichment: 0
+invalid_amount_aed_nulls: 0
+missing_approver_count: 2444
+missing_source_amount_count: 740
+
+PERFORMANCE
+-----------------------------------------------------------------
+Execution time: 0.4330 seconds
+Assessment target: < 30 seconds
+Performance requirement met: True
+
+IMPLEMENTATION NOTES
+-----------------------------------------------------------------
+Pandas vectorised operations and merge() are used; no iterrows() processing is used.
+Join cardinality is validated using validate='many_to_one' to prevent accidental transaction row duplication.
+All 50,000 transaction records are processed in-memory; chunking is unnecessary at this dataset size.

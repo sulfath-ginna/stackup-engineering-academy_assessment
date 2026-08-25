@@ -1,0 +1,15 @@
+dq_check,affected_rows,affected_pct,treatment
+Missing transaction amount,740,1.48,Retain null; do not assume amount is zero.
+Missing approver,2444,4.89,Retain null and flag for review.
+Paid transaction without approver,1827,3.65,Flag for approval/control review.
+Missing disputed amount,740,1.48,Retain null because disputed amount is unresolved.
+Zero transaction amount,0,0.0,Flag for review.
+Negative transaction amount,0,0.0,Flag for review.
+Invalid transaction date,0,0.0,Convert invalid value to NaT.
+Duplicate transaction ID,0,0.0,Investigate duplicate business key.
+Duplicate invoice reference,0,0.0,Investigate possible duplicate invoice.
+Invalid project reference,0,0.0,Investigate referential-integrity failure.
+Invalid approver reference,0,0.0,Investigate invalid employee reference.
+Transaction before project start,0,0.0,Review project lifecycle inconsistency.
+Transaction after project end,0,0.0,Review project lifecycle inconsistency.
+Missing notes,10751,21.5,Informational only; notes may be optional.

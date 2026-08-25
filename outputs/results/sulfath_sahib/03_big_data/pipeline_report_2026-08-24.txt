@@ -1,0 +1,27 @@
+StackUp Engineering Academy — Airflow ETL Pipeline Report
+======================================================================
+
+DAG: presight_etl_pipeline
+Execution date/time UAE: 2026-08-24T06:00:00+04:00
+
+RAW VS CLEAN ROW COUNTS
+----------------------------------------------------------------------
+Projects: 500 raw -> 500 clean
+Employees: 1000 raw -> 1000 clean
+Transactions: 50000 raw -> 50000 clean
+
+DATA QUALITY RESULTS
+----------------------------------------------------------------------
+Overall status: PASS
+Minimum required completeness: 80.0%
+projects.project_id: 100.0%
+employees.employee_id: 100.0%
+transactions.transaction_id: 100.0%
+transactions.project_id: 100.0%
+
+FILES WRITTEN
+----------------------------------------------------------------------
+/opt/airflow/project/outputs/projects_clean.csv
+/opt/airflow/project/outputs/employees_clean.csv
+/opt/airflow/project/outputs/transactions_clean.csv
+/opt/airflow/project/outputs/pipeline_summary.txt
